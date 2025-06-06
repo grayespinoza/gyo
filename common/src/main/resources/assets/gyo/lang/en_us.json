@@ -1,0 +1,15 @@
+{
+  "text.autoconfig.gyo.title": "Gyo",
+
+  "text.autoconfig.gyo.category.Client": "Client",
+
+  "text.autoconfig.gyo.option.windowBorderEnabled": "Window Border Enabled",
+  "text.autoconfig.gyo.option.windowBorderEnabled.@Tooltip": "Should the window border be enabled?",
+
+  "text.autoconfig.gyo.option.windowBorderEnabledAlert": "Window Border Enabled Alert",
+  "text.autoconfig.gyo.option.windowBorderEnabledAlert.@Tooltip": "Should text be displayed when pressing the Window Border Enabled keybind?",
+
+  "key.gyo": "Gyo",
+  "key.gyo.toggle_window_border_enabled": "Toggle Window Border Enabled",
+  "key.gyo.refresh_window_resolution": "Refresh Window Resolution"
+}
