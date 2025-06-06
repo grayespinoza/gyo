@@ -10,11 +10,15 @@ import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 public class GyoConfiguration implements ConfigData {
   @ConfigEntry.Category("Client")
   @ConfigEntry.Gui.Tooltip
-  public boolean windowBorderEnabled = true;
+  public boolean hudActiveOnStart = false;
 
   @ConfigEntry.Category("Client")
   @ConfigEntry.Gui.Tooltip
-  public boolean windowBorderEnabledAlert = true;
+  public boolean windowBorderEnabled = false;
+
+  @ConfigEntry.Category("Client")
+  @ConfigEntry.Gui.Tooltip
+  public boolean windowBorderEnabledAlert = false;
 
   public static void init() {
     AutoConfig.register(GyoConfiguration.class, Toml4jConfigSerializer::new);

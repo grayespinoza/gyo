@@ -3,6 +3,9 @@
 
   "text.autoconfig.gyo.category.Client": "Client",
 
+  "text.autoconfig.gyo.option.hudActiveOnStart": "HUD Active On Start",
+  "text.autoconfig.gyo.option.hudActiveOnStart.@Tooltip": "Should the HUD be active on start?",
+
   "text.autoconfig.gyo.option.windowBorderEnabled": "Window Border Enabled",
   "text.autoconfig.gyo.option.windowBorderEnabled.@Tooltip": "Should the window border be enabled?",
 
