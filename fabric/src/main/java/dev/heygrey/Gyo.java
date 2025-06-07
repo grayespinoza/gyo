@@ -34,7 +34,7 @@ public class Gyo implements ClientModInitializer {
                 "key.gyo"));
     ClientTickEvents.END_CLIENT_TICK.register(
         client -> {
-          if (client.currentScreen instanceof TitleScreen && activations < 13) {
+          if (client.currentScreen instanceof TitleScreen && activations < 59) {
             activations += 1;
             long window = client.getInstance().getWindow().getHandle();
             boolean isWindowMaximized =
@@ -42,12 +42,16 @@ public class Gyo implements ClientModInitializer {
             if (isWindowMaximized) {
               GLFW.glfwRestoreWindow(window);
             }
+            GLFW.glfwSetWindowAttrib(window, GLFW.GLFW_RESIZABLE, GLFW.GLFW_FALSE);
             GLFW.glfwSetWindowAttrib(window, GLFW.GLFW_DECORATED, GLFW.GLFW_FALSE);
+            GLFW.glfwPollEvents();
             GLFWVidMode vidMode = GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
             if (vidMode != null) {
               GLFW.glfwSetWindowSize(window, resolutionWidth(vidMode.height()), vidMode.height());
+              GLFW.glfwSetWindowPos(
+                  window, (resolutionWidth(vidMode.height()) - vidMode.width()) / 2, 0);
             }
-            GLFW.glfwSetWindowAttrib(window, GLFW.GLFW_RESIZABLE, GLFW.GLFW_FALSE);
+
             if (!GyoConfiguration.getInstance().hudActiveOnStart) {
               client.options.hudHidden = true;
             }
