@@ -10,7 +10,7 @@ import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 public class GyoConfiguration implements ConfigData {
   @ConfigEntry.Category("Client")
   @ConfigEntry.Gui.Tooltip
-  public boolean hudActiveOnStart = false;
+  public boolean hudActiveOnStart = true;
 
   @ConfigEntry.Category("Client")
   @ConfigEntry.Gui.Tooltip

@@ -4,7 +4,10 @@
 **Required**:
 - [Fabric API](https://github.com/FabricMC/fabric)
 - [Cloth Config](https://github.com/shedaniel/cloth-config)
+
+**Optional**:
 - [Mod Menu](https://github.com/TerraformersMC/ModMenu)
+- [First Person Model](https://github.com/tr7zw/FirstPersonModel)
 
 ## Downloads
 [![GitHub](https://github.com/intergrav/devins-badges/raw/2dc967fc44dc73850eee42c133a55c8ffc5e30cb/assets/cozy/available/github_vector.svg)](https://github.com/grayespinoza/gyo/releases)
@@ -72,6 +75,36 @@ fabric_loader_version=0.16.14
 fabric_loom_version=1.10-SNAPSHOT
 yarn_mappings=1.21.2+build.1
 mod_menu_version=12.0.0
+```
+</details>
+
+<details>
+<summary>1.21.1</summary>
+
+`gyo/gradle.properties`
+```toml
+minecraft_version=1.21.1
+cloth_config_version=15.0.140
+fabric_version=0.116.1+1.21.1
+fabric_loader_version=0.16.14
+fabric_loom_version=1.10-SNAPSHOT
+yarn_mappings=1.21.1+build.3
+mod_menu_version=11.0.3
+```
+</details>
+
+<details>
+<summary>1.21</summary>
+
+`gyo/gradle.properties`
+```toml
+minecraft_version=1.21
+cloth_config_version=15.0.140
+fabric_version=0.102.0+1.21
+fabric_loader_version=0.16.14
+fabric_loom_version=1.10-SNAPSHOT
+yarn_mappings=1.21+build.9
+mod_menu_version=11.0.3
 ```
 </details>
 

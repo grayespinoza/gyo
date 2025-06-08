@@ -25,8 +25,8 @@ public abstract class InGameHudMixin {
   @Shadow
   protected abstract void renderMiscOverlays(DrawContext context, RenderTickCounter tickCounter);
 
-  @Shadow
-  protected abstract void renderNauseaOverlay(DrawContext context, float nauseaStrength);
+  // @Shadow
+  // protected abstract void renderNauseaOverlay(DrawContext context, float nauseaStrength);
 
   @Shadow
   protected abstract void renderOverlay(DrawContext context, Identifier texture, float opacity);
