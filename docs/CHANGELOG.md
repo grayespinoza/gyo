@@ -1,9 +1,10 @@
 # Changelog
 
-## [0.2.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.1.0+1.21.x..0.2.0+1.21.x) - 2025-06-07
+## [0.2.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.1.0+1.21.x..0.2.0+1.21.x) - 2025-06-08
 
 ### Features
 
+- Add 1.21-1.21.1 support - ([6ff4398](https://github.com/grayespinoza/gyo/commit/6ff43984a5a164b268ead800ec3e82c6846049f9))
 - Hide HUD on startup - ([db0b457](https://github.com/grayespinoza/gyo/commit/db0b4571f930eff7f762ca62526c0d4bff7886ae))
 
 ### Bug Fixes
