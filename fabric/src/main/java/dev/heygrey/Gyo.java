@@ -49,7 +49,7 @@ public class Gyo implements ClientModInitializer {
             if (vidMode != null) {
               GLFW.glfwSetWindowSize(window, resolutionWidth(vidMode.height()), vidMode.height());
               GLFW.glfwSetWindowPos(
-                  window, (resolutionWidth(vidMode.height()) - vidMode.width()) / 2, 0);
+                  window, (vidMode.width() - resolutionWidth(vidMode.height())) / 2, 0);
             }
 
             if (!GyoConfiguration.getInstance().hudActiveOnStart) {
