@@ -1,10 +1,14 @@
 # Changelog
 
-## [0.3.1+1.21.x](https://github.com/grayespinoza/gyo/compare/0.3.0+1.21.x..0.3.1+1.21.x) - 2025-06-10
+## [0.3.1+1.21.x](https://github.com/grayespinoza/gyo/compare/0.3.0+1.21.x..0.3.1+1.21.x) - 2025-06-11
 
 ### Bug Fixes
 
 - Center window horizontally on startup - ([3689bfe](https://github.com/grayespinoza/gyo/commit/3689bfe2a2d5bb215b0e48b065174a2209bfb91a))
+
+### Continuous Delivery
+
+- *(GitHub Actions)* Add job to upload artifacts to GitHub - ([c9e2dd0](https://github.com/grayespinoza/gyo/commit/c9e2dd0f861e44793579d4bf25569dd7948da43d))
 ## [0.3.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.2.0+1.21.x..0.3.0+1.21.x) - 2025-06-08
 
 ### Features
