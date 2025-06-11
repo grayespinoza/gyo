@@ -31,3 +31,26 @@ jobs:
           git add docs/CHANGELOG.md
           git commit -m "docs: update Changelog"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git main
+  mc-publish:
+    name: Release with mc-publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "microsoft"
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x ./gradlew
+      - name: Clean Build
+        run: ./gradlew clean build
+      - name: Publish (GitHub Releases)
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            fabric/build/libs/!(*-@(javadoc|sources)).jar
