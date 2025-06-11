@@ -1,7 +1,8 @@
 name: CD
 on:
   push:
-    branches: main
+    tags:
+      - "*"
 
 jobs:
   git-cliff:
@@ -34,6 +35,8 @@ jobs:
   mc-publish:
     name: Release with mc-publish
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -52,5 +55,9 @@ jobs:
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          files: |
-            fabric/build/libs/!(*-@(javadoc|sources)).jar
+          files: fabric/build/libs/!(*-@(javadoc|sources)).jar
+      - name: Publish (Modrinth)
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          files: fabric/build/libs/!(*-@(javadoc|sources)).jar
