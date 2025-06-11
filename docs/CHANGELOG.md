@@ -8,6 +8,7 @@
 
 ### Continuous Delivery
 
+- *(GitHub Actions)* Add job to upload artifacts to Modrinth - ([d33d64c](https://github.com/grayespinoza/gyo/commit/d33d64c83a9279bfb86f31bcc30aff7569a4f06f))
 - *(GitHub Actions)* Add job to upload artifacts to GitHub - ([c9e2dd0](https://github.com/grayespinoza/gyo/commit/c9e2dd0f861e44793579d4bf25569dd7948da43d))
 ## [0.3.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.2.0+1.21.x..0.3.0+1.21.x) - 2025-06-08
 
