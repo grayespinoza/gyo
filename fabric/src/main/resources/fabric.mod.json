@@ -34,7 +34,6 @@
     "cloth-config": "*"
   },
   "suggests": {
-    "modmenu": "*",
-    "firstperson": "*"
+    "modmenu": "*"
   }
 }
