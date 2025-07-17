@@ -37,6 +37,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    strategy:
+      matrix:
+        game_version:
+          - "1.21"
+          - "1.21.1"
+          - "1.21.2"
+          - "1.21.3"
+          - "1.21.4"
+          - "1.21.5"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -51,13 +60,12 @@ jobs:
         run: chmod +x ./gradlew
       - name: Clean Build
         run: ./gradlew clean build
-      - name: Publish (GitHub Releases)
+      - name: Publish on GitHub Releases and Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          files: fabric/build/libs/!(*-@(javadoc|sources)).jar
-      - name: Publish (Modrinth)
-        uses: Kir-Antipov/mc-publish@v3.3
-        with:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          files: fabric/build/libs/!(*-@(javadoc|sources)).jar
+          version: ${{ github.ref_name }}+${{ matrix.game_version }}
+          files: |
+            versions/${{ matrix.game_version }}/build/libs/!(*-@(dev|javadoc|sources)).jar
+            versions/${{ matrix.game_version }}/build/libs/*-@(dev|javadoc|sources).jar
