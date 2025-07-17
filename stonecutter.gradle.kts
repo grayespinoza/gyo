@@ -3,7 +3,7 @@ plugins {
   id("fabric-loom") version "1.11-SNAPSHOT" apply false
 }
 
-stonecutter active "1.21.5"
+stonecutter active "1.21.7"
 
 stonecutter parameters
   {
