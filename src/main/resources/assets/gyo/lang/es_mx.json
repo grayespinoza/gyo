@@ -1,0 +1,22 @@
+{
+  "text.autoconfig.gyo.title": "Gyo",
+
+  "text.autoconfig.gyo.category.Client": "Cliente",
+
+  "text.autoconfig.gyo.option.resizeOnStartup": "Cambia El Tamaño Al Iniciar",
+  "text.autoconfig.gyo.option.resizeOnStartup.@Tooltip": "¿Se debe cambiar el tamaño de la ventana a una relación de aspecto de 4:3 al iniciar?",
+
+  "text.autoconfig.gyo.option.highContrast": "Alto Contraste",
+  "text.autoconfig.gyo.option.highContrast.@Tooltip": "¿Se debe habilitar el alto contraste?",
+
+  "text.autoconfig.gyo.option.highContrastBlockEntities": "Entidades De Bloque De Alto Contraste",
+  "text.autoconfig.gyo.option.highContrastBlockEntities.@Tooltip": "¿Se debe habilitar las entidades de bloque de alto contraste?",
+
+  "text.autoconfig.gyo.option.highContrastEntities": "Entidades De Alto Contraste",
+  "text.autoconfig.gyo.option.highContrastEntities.@Tooltip": "¿Se debe habilitar entidades de alto contraste?",
+
+  "key.gyo": "Gyo",
+  "key.gyo.toggle_high_contrast": "Alternar Alto Contraste",
+  "key.gyo.toggle_high_contrast_block_entities": "Alternar Entidades De Bloque De Alto Contraste",
+  "key.gyo.toggle_high_contrast_entities": "Alternar Entidades De Alto Contraste"
+}
