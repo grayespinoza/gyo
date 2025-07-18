@@ -6,11 +6,11 @@
 
 ## Dependencies
 **Required**:
-- [Fabric API](https://github.com/FabricMC/fabric)
-- [Cloth Config](https://github.com/shedaniel/cloth-config)
+- Fabric API ([GitHub](https://github.com/FabricMC/fabric)) ([Modrinth](https://modrinth.com/mod/fabric-api))
+- Cloth Config ([GitHub](https://github.com/shedaniel/cloth-config)) ([Modrinth](https://modrinth.com/mod/cloth-config))
 
 **Optional**:
-- [Mod Menu](https://github.com/TerraformersMC/ModMenu)
+- Mod Menu ([GitHub](https://github.com/TerraformersMC/ModMenu)) ([Modrinth](https://modrinth.com/mod/modmenu))
 
 ## Downloads
 [![GitHub](https://github.com/intergrav/devins-badges/raw/2dc967fc44dc73850eee42c133a55c8ffc5e30cb/assets/cozy/available/github_vector.svg)](https://github.com/grayespinoza/gyo/releases)
