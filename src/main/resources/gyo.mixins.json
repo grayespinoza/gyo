@@ -2,7 +2,7 @@
   "required": true,
   "package": "dev.heygrey.mixin",
   "compatibilityLevel": "JAVA_21",
-  "client": ["InGameHudMixin"],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   }

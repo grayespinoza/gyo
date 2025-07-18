@@ -3,16 +3,20 @@
 
   "text.autoconfig.gyo.category.Client": "Client",
 
-  "text.autoconfig.gyo.option.hudActiveOnStart": "HUD Active On Start",
-  "text.autoconfig.gyo.option.hudActiveOnStart.@Tooltip": "Should the HUD be active on start?",
+  "text.autoconfig.gyo.option.resizeOnStartup": "Resize On Startup",
+  "text.autoconfig.gyo.option.resizeOnStartup.@Tooltip": "Should the window be resized to a 4:3 aspect ratio on startup?",
 
-  "text.autoconfig.gyo.option.windowBorderEnabled": "Window Border Enabled",
-  "text.autoconfig.gyo.option.windowBorderEnabled.@Tooltip": "Should the window border be enabled?",
+  "text.autoconfig.gyo.option.highContrast": "High Contrast",
+  "text.autoconfig.gyo.option.highContrast.@Tooltip": "Should high contrast be enabled?",
 
-  "text.autoconfig.gyo.option.windowBorderEnabledAlert": "Window Border Enabled Alert",
-  "text.autoconfig.gyo.option.windowBorderEnabledAlert.@Tooltip": "Should text be displayed when pressing the Window Border Enabled keybind?",
+  "text.autoconfig.gyo.option.highContrastBlockEntities": "High Contrast Block Entities",
+  "text.autoconfig.gyo.option.highContrastBlockEntities.@Tooltip": "Should high contrast block entities be enabled?",
+
+  "text.autoconfig.gyo.option.highContrastEntities": "High Contrast Entities",
+  "text.autoconfig.gyo.option.highContrastEntities.@Tooltip": "Should high contrast entities be enabled?",
 
   "key.gyo": "Gyo",
-  "key.gyo.toggle_window_border_enabled": "Toggle Window Border Enabled",
-  "key.gyo.refresh_window_resolution": "Refresh Window Resolution"
+  "key.gyo.toggle_high_contrast": "Toggle High Contrast",
+  "key.gyo.toggle_high_contrast_block_entities": "Toggle High Contrast Block Entities",
+  "key.gyo.toggle_high_contrast_entities": "Toggle High Contrast Entities"
 }

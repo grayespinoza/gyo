@@ -19,7 +19,5 @@
 ## Reporting Issues
 Please use [GitHub Issues](https://github.com/grayespinoza/gyo/issues) to report bugs, crashes, and other issues.
 
-## Building
-
 ## License
 Gyo is under the [GNU Lesser General Public License, version 3](https://github.com/grayespinoza/gyo/blob/main/COPYING.LESSER).

@@ -10,15 +10,19 @@ import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 public class GyoConfiguration implements ConfigData {
   @ConfigEntry.Category("Client")
   @ConfigEntry.Gui.Tooltip
-  public boolean hudActiveOnStart = true;
+  public boolean resizeOnStartup = true;
 
   @ConfigEntry.Category("Client")
   @ConfigEntry.Gui.Tooltip
-  public boolean windowBorderEnabled = false;
+  public boolean highContrast = true;
 
   @ConfigEntry.Category("Client")
   @ConfigEntry.Gui.Tooltip
-  public boolean windowBorderEnabledAlert = false;
+  public boolean highContrastBlockEntities = true;
+
+  @ConfigEntry.Category("Client")
+  @ConfigEntry.Gui.Tooltip
+  public boolean highContrastEntities = true;
 
   public static void init() {
     AutoConfig.register(GyoConfiguration.class, Toml4jConfigSerializer::new);
