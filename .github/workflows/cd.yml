@@ -52,8 +52,9 @@ jobs:
       - name: Upload Built JARs
         uses: actions/upload-artifact@v4
         with:
+          name: JARs
           path: |
-            ./versions/**/build/libs/*.jar
+            versions/**/build/libs/*.jar
   mc-publish:
     name: Release with mc-publish
     runs-on: ubuntu-latest
@@ -75,7 +76,8 @@ jobs:
       - name: Download Built JARs
         uses: actions/download-artifact@v4
         with:
-          path: ./versions
+          name: JARs
+          path: versions/
       - name: Publish on GitHub Releases and Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
         with:
@@ -85,3 +87,5 @@ jobs:
           files: |
             versions/${{ matrix.game_version }}/build/libs/!(*-@(dev|javadoc|sources)).jar
             versions/${{ matrix.game_version }}/build/libs/*-@(dev|javadoc|sources).jar
+          changelog-file: docs/CHANGELOG.md
+          retry-attempts: 6
