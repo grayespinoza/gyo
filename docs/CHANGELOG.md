@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.6.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.5.0+1.21.x..0.6.0+1.21.x) - 2025-07-21
+
+### Features
+
+- Add 1.21.8 support - ([3dac311](https://github.com/grayespinoza/gyo/commit/3dac311b875c92179983f483584947706337d194))
+
+### Documentation
+
+- *(README)* Add Modrinth links for dependencies - ([46158e4](https://github.com/grayespinoza/gyo/commit/46158e446e256a59bbc86f96eb6799dd38552c0d))
+
+### Continuous Delivery
+
+- *(GitHub Actions)* Increase retry limit for publish - ([a54ec4e](https://github.com/grayespinoza/gyo/commit/a54ec4e19bacba5710f7e0a0c4d33aebe6565d24))
+
+### Miscellaneous Tasks
+
+- Add Spanish translation - ([b7cc076](https://github.com/grayespinoza/gyo/commit/b7cc076c4aa22150ef3e610c0332d0d1361f05b4))
 ## [0.5.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.4.0+1.21.x..0.5.0+1.21.x) - 2025-07-18
 
 ### Features
@@ -56,4 +73,7 @@
 
 - Initial release - ([ba2a72a](https://github.com/grayespinoza/gyo/commit/ba2a72a160e786d493bc4ef625b3feaad3b291d9))
 
+## New Contributors
+
+- @**[grayespinoza](https://github.com/grayespinoza)** made their first contribution
 
