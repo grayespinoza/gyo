@@ -20,6 +20,7 @@ public class Gyo implements ClientModInitializer {
   @Override
   public void onInitializeClient() {
     GyoConfiguration.init();
+    GyoConfiguration gyoConfiguration = GyoConfiguration.getInstance();
 
     toggleHighContrastKey =
         KeyBindingHelper.registerKeyBinding(
@@ -45,26 +46,24 @@ public class Gyo implements ClientModInitializer {
 
     ClientTickEvents.END_CLIENT_TICK.register(
         client -> {
-          if (client.currentScreen instanceof TitleScreen
-              && GyoConfiguration.getInstance().resizeOnStartup
-              && !resizeActivated) {
+          if (!resizeActivated
+              && client.currentScreen instanceof TitleScreen
+              && gyoConfiguration.resizeOnStartup) {
             resizeWindow();
             resizeActivated = !resizeActivated;
           }
 
           while (toggleHighContrastKey.wasPressed()) {
-            GyoConfiguration.getInstance().highContrast =
-                !GyoConfiguration.getInstance().highContrast;
+            gyoConfiguration.highContrast = !gyoConfiguration.highContrast;
           }
 
           while (toggleHighContrastBlockEntitiesKey.wasPressed()) {
-            GyoConfiguration.getInstance().highContrastBlockEntities =
-                !GyoConfiguration.getInstance().highContrastBlockEntities;
+            gyoConfiguration.highContrastBlockEntities =
+                !gyoConfiguration.highContrastBlockEntities;
           }
 
           while (toggleHighContrastEntitiesKey.wasPressed()) {
-            GyoConfiguration.getInstance().highContrastEntities =
-                !GyoConfiguration.getInstance().highContrastEntities;
+            gyoConfiguration.highContrastEntities = !gyoConfiguration.highContrastEntities;
           }
         });
   }
