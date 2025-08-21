@@ -1,6 +1,6 @@
 [remote.github]
 owner = "grayespinoza"
-repo  = "gyo"
+repo = "gyo"
 
 [changelog]
 header = """
