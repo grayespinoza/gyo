@@ -1,5 +1,44 @@
 # Changelog
 
+## [0.7.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.6.0+1.21.x..0.7.0+1.21.x) - 2025-11-17
+
+### Features
+
+- Add 1.21.9-1.21.10 support - ([348000d](https://github.com/grayespinoza/gyo/commit/348000d2b60226080cc3301746827527838c76a2))
+
+### Performance
+
+- Cache Gyo config - ([8373c09](https://github.com/grayespinoza/gyo/commit/8373c09110704fc5c1631970d56f5e8c7e252567))
+
+### Styling
+
+- Format using Prettier - ([cf51386](https://github.com/grayespinoza/gyo/commit/cf5138655c8539969a1a7066279652782784a943))
+
+### Documentation
+
+- *(CHANGELOG)* Remove dependabot[bot] as new contributor - ([46a88ea](https://github.com/grayespinoza/gyo/commit/46a88ea7464f5bdcaa4fbec5cb73ba486d828724))
+
+### Continuous Integration
+
+- *(GitHub Actions)* Schedule dependabot conveniently - ([e7c40fd](https://github.com/grayespinoza/gyo/commit/e7c40fdcfdd8750ba724c583b49744f2037ccfa7))
+
+### Continuous Delivery
+
+- *(GitHub Actions)* Bump wrapper-validation from 4 to 5 - ([6ca81ab](https://github.com/grayespinoza/gyo/commit/6ca81abd2ef010965d3465910dae863002120d6f))
+- *(GitHub Actions)* Bump setup-java from 4 to 5 - ([ce33095](https://github.com/grayespinoza/gyo/commit/ce33095ff4d389479ac85831bce4140fb83734e7))
+- *(GitHub Actions)* Bump checkout from 4 to 5 - ([d47cfbb](https://github.com/grayespinoza/gyo/commit/d47cfbbb70489b7e15afbdcb37d2cf877010771d))
+- *(GitHub Actions)* Bump download-artifact from 4 to 5 - ([889f08b](https://github.com/grayespinoza/gyo/commit/889f08be43e0f7bb8a0c278aecfe076965961e96))
+
+### Miscellaneous Tasks
+
+- Fix typo - ([185109c](https://github.com/grayespinoza/gyo/commit/185109cd066e6f9e84ed405cffa028c6ff94a89e))
+
+### Github-actions
+
+- Bump actions/upload-artifact from 4 to 5 - ([a02bc91](https://github.com/grayespinoza/gyo/commit/a02bc91c3d1e8e821c302bb94c60ae9c7182a8ac))
+- Bump actions/download-artifact from 5 to 6 - ([11781d6](https://github.com/grayespinoza/gyo/commit/11781d6110c2725067c3b811594bc2e53098b5c6))
+
+## New Contributors
 ## [0.6.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.5.0+1.21.x..0.6.0+1.21.x) - 2025-07-21
 
 ### Features
