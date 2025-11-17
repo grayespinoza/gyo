@@ -3,33 +3,31 @@ plugins {
   id("fabric-loom")
 }
 
-version = "${property("mod_version")}+${stonecutter.current.version}"
+version = "${property("mod.version")}+${stonecutter.current.version}"
 
-group = property("maven_group") as String
+group = property("maven.group") as String
 
-base.archivesName = property("mod_id") as String
+base.archivesName = property("mod.id") as String
 
 repositories {
   fun strictMaven(url: String, alias: String, vararg groups: String) = exclusiveContent {
     forRepository { maven(url) { name = alias } }
     filter { groups.forEach(::includeGroup) }
   }
-  maven { url = uri("https://maven.shedaniel.me/") }
   maven { url = uri("https://maven.terraformersmc.com/releases/") }
 }
 
 dependencies {
   fun fapi(vararg modules: String) {
     for (it in modules) modImplementation(
-      fabricApi.module(it, property("fabric_version") as String)
+      fabricApi.module(it, property("fabric.version") as String)
     )
   }
   minecraft("com.mojang:minecraft:${stonecutter.current.version}")
-  mappings("net.fabricmc:yarn:${property("yarn_mappings")}:v2")
-  modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}")
-  modImplementation("net.fabricmc:fabric-loader:${property("fabric_loader_version")}")
-  modApi("me.shedaniel.cloth:cloth-config-fabric:${property("cloth_config_version")}")
-  modApi("com.terraformersmc:modmenu:${property("mod_menu_version")}")
+  mappings("net.fabricmc:yarn:${property("yarn.mappings")}:v2")
+  modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric.version")}")
+  modImplementation("net.fabricmc:fabric-loader:${property("fabric.loader.version")}")
+  modApi("com.terraformersmc:modmenu:${property("mod.menu.version")}")
   fapi("fabric-lifecycle-events-v1")
 }
 
@@ -54,21 +52,21 @@ java {
 
 tasks {
   processResources {
-    inputs.property("java_version", project.property("java_version"))
+    inputs.property("java_version", project.property("java.version"))
     inputs.property("license", project.property("license"))
-    inputs.property("mod_description", project.property("mod_description"))
-    inputs.property("mod_version", project.property("mod_version"))
-    inputs.property("minecraft_version", project.property("minecraft_version"))
-    inputs.property("fabric_loader_version", project.property("fabric_loader_version"))
+    inputs.property("mod_description", project.property("mod.description"))
+    inputs.property("mod_version", project.property("mod.version"))
+    inputs.property("minecraft_version", project.property("minecraft.version"))
+    inputs.property("fabric_loader_version", project.property("fabric.loader.version"))
 
     val props =
       mapOf(
-        "java_version" to project.property("java_version"),
+        "java_version" to project.property("java.version"),
         "license" to project.property("license"),
-        "mod_description" to project.property("mod_description"),
-        "mod_version" to project.property("mod_id"),
-        "minecraft_version" to project.property("minecraft_version"),
-        "fabric_loader_version" to project.property("fabric_loader_version"),
+        "mod_description" to project.property("mod.description"),
+        "mod_version" to project.property("mod.version"),
+        "minecraft_version" to project.property("minecraft.version"),
+        "fabric_loader_version" to project.property("fabric.loader.version"),
       )
 
     filesMatching("fabric.mod.json") { expand(props) }
@@ -77,7 +75,7 @@ tasks {
   register<Copy>("buildAndCollect") {
     group = "build"
     from(remapJar.map { it.archiveFile }, remapSourcesJar.map { it.archiveFile })
-    into(rootProject.layout.buildDirectory.file("libs/${project.property("mod_version")}"))
+    into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
     dependsOn("build")
   }
 }

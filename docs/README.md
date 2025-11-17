@@ -10,7 +10,6 @@
 **Required**:
 
 - Fabric API ([GitHub](https://github.com/FabricMC/fabric)) ([Modrinth](https://modrinth.com/mod/fabric-api))
-- Cloth Config ([GitHub](https://github.com/shedaniel/cloth-config)) ([Modrinth](https://modrinth.com/mod/cloth-config))
 
 **Optional**:
 
