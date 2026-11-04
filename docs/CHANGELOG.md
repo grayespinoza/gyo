@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.8.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.7.0+1.21.x..0.8.0+1.21.x) - 2026-11-04
+
+### Features
+
+- Add 1.21.11 support - ([6969eee](https://github.com/grayespinoza/gyo/commit/6969eee4320ea234a505e0275e7ed5491db7d7bc))
+
+### Github-actions
+
+- Bump gradle/actions from 6.3.0 to 6.4.0 (#41) - ([8d9a7e0](https://github.com/grayespinoza/gyo/commit/8d9a7e0b5e3de8c5ccdd09178a47c322633fd6cc))
+- Bump actions/setup-java from 5 to 6 (#40) - ([72427f8](https://github.com/grayespinoza/gyo/commit/72427f89908167291fece8baa4f7d4628251e104))
+- Bump gradle/actions from 6.2.0 to 6.3.0 (#39) - ([68ed28b](https://github.com/grayespinoza/gyo/commit/68ed28b05d488849c5614685a4eee2f3c99b9c4f))
+- Bump gradle/actions from 6 to 6.2.0 (#38) - ([1a7cc41](https://github.com/grayespinoza/gyo/commit/1a7cc41b96dc6452cd97a98d66ab24050725dee3))
+- Bump actions/checkout from 6 to 7 (#37) - ([69ba12d](https://github.com/grayespinoza/gyo/commit/69ba12db5d70ff10accf22c2ba4834d6737b8cbf))
+- Bump gradle/actions from 5 to 6 (#36) - ([30de195](https://github.com/grayespinoza/gyo/commit/30de195dbb3b335113a1fcb5071557d96956a344))
+- Bump actions/upload-artifact from 6 to 7 (#35) - ([6721dcc](https://github.com/grayespinoza/gyo/commit/6721dcc681aea46e51591708dd54d5a0f563982d))
+- Bump actions/download-artifact from 7 to 8 (#34) - ([1f3c492](https://github.com/grayespinoza/gyo/commit/1f3c49222d54884bbef3a88f7f513b5cd50e7b23))
+- Bump actions/download-artifact from 5 to 7 (#33) - ([d93f732](https://github.com/grayespinoza/gyo/commit/d93f732f3e9fb53fe773335270398f34c17c7f8a))
+- Bump actions/upload-artifact from 4 to 6 (#32) - ([f90ad84](https://github.com/grayespinoza/gyo/commit/f90ad84d7789ea95c02e84053e8fb7968db6b6b1))
+- Bump actions/checkout from 5 to 6 (#31) - ([6577c6d](https://github.com/grayespinoza/gyo/commit/6577c6d6b2569b369ef02cd916a6c222212476f9))
+- Bump gradle/actions from 4 to 5 (#29) - ([0c43f71](https://github.com/grayespinoza/gyo/commit/0c43f715d5a4845a4f20d4c41d13d82efa66082d))
 ## [0.7.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.6.0+1.21.x..0.7.0+1.21.x) - 2025-11-17
 
 ### Features
