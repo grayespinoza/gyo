@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.9.0+1.21.x-26.1.x](https://github.com/grayespinoza/gyo/compare/0.8.0+1.21.x..0.9.0+1.21.x-26.1.x) - 2026-11-05
+
+### Features
+
+- Add 26.1-26.1.2 support - ([ecf25ed](https://github.com/grayespinoza/gyo/commit/ecf25ed2e0a0fb6beb98cef6165f1744ccd91ba2))
+
+### Build
+
+- Bump Stonecutter to 0.9.8 - ([58c6a75](https://github.com/grayespinoza/gyo/commit/58c6a75db7e4a1eaf1578a9bcf8cb470b2cddcf8))
 ## [0.8.0+1.21.x](https://github.com/grayespinoza/gyo/compare/0.7.0+1.21.x..0.8.0+1.21.x) - 2026-11-04
 
 ### Features
