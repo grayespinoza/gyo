@@ -2,8 +2,8 @@ package dev.heygrey;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.TitleScreen;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWVidMode;
 
@@ -14,7 +14,7 @@ public class Gyo implements ClientModInitializer {
   public void onInitializeClient() {
     ClientTickEvents.END_CLIENT_TICK.register(
         client -> {
-          if (!resizeActivated && client.currentScreen instanceof TitleScreen) {
+          if (!resizeActivated && client.screen instanceof TitleScreen) {
             resizeWindow();
             resizeActivated = !resizeActivated;
           }
@@ -26,7 +26,11 @@ public class Gyo implements ClientModInitializer {
   }
 
   public void resizeWindow() {
-    long window = MinecraftClient.getInstance().getWindow().getHandle();
+    long window;
+    //? if <1.21.9 {
+    /*window = Minecraft.getInstance().getWindow().getWindow();
+    *///?} else
+    window = Minecraft.getInstance().getWindow().handle();
 
     boolean isWindowMaximized =
         GLFW.glfwGetWindowAttrib(window, GLFW.GLFW_MAXIMIZED) == GLFW.GLFW_TRUE;

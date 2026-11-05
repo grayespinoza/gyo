@@ -1,81 +1,115 @@
 plugins {
-  `maven-publish`
-  id("fabric-loom")
+    // This plugin applies the correct loom variant based on the Minecraft version
+    id("dev.kikugie.loom-back-compat")
 }
 
-version = "${property("mod.version")}+${stonecutter.current.version}"
-
-group = property("maven.group") as String
-
+// DO NOT set group = ...!
+version = "${property("mod.version")}+${sc.current.version}"
 base.archivesName = property("mod.id") as String
 
+val requiredJava: JavaVersion = when {
+    sc.current.parsed >= "26.1" -> JavaVersion.VERSION_25
+    sc.current.parsed >= "1.20.5" -> JavaVersion.VERSION_21
+    sc.current.parsed >= "1.18" -> JavaVersion.VERSION_17
+    sc.current.parsed >= "1.17" -> JavaVersion.VERSION_16
+    else -> JavaVersion.VERSION_1_8
+}
+
+// This can be used for publishing on Modrinth and Curseforge
+val compatibleVersions: List<String> = sc.properties.rawOrNull("mod", "mc_releases")
+    ?.asList().orEmpty().map { it.toString() }
+
 repositories {
-  fun strictMaven(url: String, alias: String, vararg groups: String) = exclusiveContent {
-    forRepository { maven(url) { name = alias } }
-    filter { groups.forEach(::includeGroup) }
-  }
-  maven { url = uri("https://maven.terraformersmc.com/releases/") }
+    /**
+     * Restricts dependency search of the given [groups] to the [maven URL][url],
+     * improving the setup speed.
+     */
+    fun strictMaven(url: String, alias: String, vararg groups: String) = exclusiveContent {
+        forRepository { maven(url) { name = alias } }
+        filter { groups.forEach(::includeGroup) }
+    }
+    strictMaven("https://api.modrinth.com/maven", "Modrinth", "maven.modrinth")
 }
 
 dependencies {
-  fun fapi(vararg modules: String) {
-    for (it in modules) modImplementation(
-      fabricApi.module(it, property("fabric.version") as String)
-    )
-  }
-  minecraft("com.mojang:minecraft:${stonecutter.current.version}")
-  mappings("net.fabricmc:yarn:${property("yarn.mappings")}:v2")
-  modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric.version")}")
-  modImplementation("net.fabricmc:fabric-loader:${property("fabric.loader.version")}")
-  modApi("com.terraformersmc:modmenu:${property("mod.menu.version")}")
-  fapi("fabric-lifecycle-events-v1")
+    /**
+     * Fetches only the required Fabric API modules to not waste time downloading all of them for each version.
+     * @see <a href="https://github.com/FabricMC/fabric">List of Fabric API modules</a>
+     */
+    fun fapi(vararg modules: String) {
+        for (it in modules) modImplementation(fabricApi.module(it, sc.properties["deps.fabric_api"]))
+    }
+
+    minecraft("com.mojang:minecraft:${sc.current.version}")
+    // Applies Mojang Mappings on obfuscated versions
+    loomx.applyMojangMappings()
+
+    // Use `mod{dependency type}` even on 26.1+ - loom-back-compat converts them
+    modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
+    fapi("fabric-lifecycle-events-v1", "fabric-resource-loader-v0", "fabric-content-registries-v0", "fabric-registry-sync-v0")
 }
 
 loom {
-  decompilerOptions.named("vineflower") { options.put("mark-corresponding-synthetics", "1") }
+    fabricModJsonPath = rootProject.file("src/main/resources/fabric.mod.json") // Useful for interface injection
 
-  runConfigs.all {
-    ideConfigGenerated(true)
-    vmArgs("-Dmixin.debug.export=true")
-    runDir = "../../run"
-  }
+    decompilerOptions.named("vineflower") {
+        options.put("mark-corresponding-synthetics", "1") // Adds names to lambdas - useful for mixins
+    }
+
+    runConfigs.all {
+        preferGradleTask = true
+        generateRunConfig = true
+        runDirectory = rootProject.file("run") // Shares the run directory between versions
+        jvmArguments.add("-Dmixin.debug.export=true") // Exports transformed classes for debugging
+    }
 }
 
 java {
-  withSourcesJar()
-  val requiresJava21: Boolean = stonecutter.eval(stonecutter.current.version, ">=1.20.6")
-  val javaVersion: JavaVersion =
-    if (requiresJava21) JavaVersion.VERSION_21 else JavaVersion.VERSION_17
-  targetCompatibility = javaVersion
-  sourceCompatibility = javaVersion
+    withSourcesJar()
+    targetCompatibility = requiredJava
+    sourceCompatibility = requiredJava
+
+    toolchain {
+        vendor = JvmVendorSpec.ADOPTIUM
+        languageVersion = JavaLanguageVersion.of(requiredJava.majorVersion)
+    }
 }
 
 tasks {
-  processResources {
-    inputs.property("java_version", project.property("java.version"))
-    inputs.property("license", project.property("license"))
-    inputs.property("mod_description", project.property("mod.description"))
-    inputs.property("mod_version", project.property("mod.version"))
-    inputs.property("minecraft_version", project.property("minecraft.version"))
-    inputs.property("fabric_loader_version", project.property("fabric.loader.version"))
+    processResources {
+        fun MutableMap<String, String>.register(key: String, value: String) {
+            inputs.property(key, value)
+            set(key, value)
+        }
 
-    val props =
-      mapOf(
-        "java_version" to project.property("java.version"),
-        "license" to project.property("license"),
-        "mod_description" to project.property("mod.description"),
-        "mod_version" to project.property("mod.version"),
-        "minecraft_version" to project.property("minecraft.version"),
-        "fabric_loader_version" to project.property("fabric.loader.version"),
-      )
+        val props = buildMap {
+            register("id", sc.properties["mod.id"])
+            register("name", sc.properties["mod.name"])
+            register("version", sc.properties["mod.version"])
+            register("minecraft", sc.properties["mod.mc_compat"])
+            register("loader", Regex("\\d+\\.\\d+").find(sc.properties.get<String>("deps.fabric_loader"))!!.value)
+        }
 
-    filesMatching("fabric.mod.json") { expand(props) }
-  }
+        filesMatching("fabric.mod.json") { expand(props) }
 
-  register<Copy>("buildAndCollect") {
-    group = "build"
-    from(remapJar.map { it.archiveFile }, remapSourcesJar.map { it.archiveFile })
-    into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
-    dependsOn("build")
-  }
+        val mixinJava = "JAVA_${requiredJava.majorVersion}"
+        filesMatching("*.mixins.json") { expand("java" to mixinJava) }
+    }
+
+    // Includes the license file in the built mod
+    withType<Jar> {
+        val name = project.property("mod.id")
+        inputs.property("mod_id", name)
+        from("../../LICENSE") { rename { "$it-$name" } }
+    }
+
+    register<Copy>("buildAndCollect") {
+        group = "build"
+        description = "Builds mod jars and copies results to `build/libs/{mod version}/`"
+
+        inputs.property("version", project.property("mod.version"))
+        // loomx.mod(Sources)Jar returns the jar task for the applied loom variant
+        from(loomx.modJar.flatMap { it.archiveFile }, loomx.modSourcesJar.flatMap { it.archiveFile })
+        into(rootProject.layout.buildDirectory.file("libs/${project.property("mod.version")}"))
+    }
 }
